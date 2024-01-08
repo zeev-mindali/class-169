@@ -1,5 +1,7 @@
 package exam_prep_08_01.cls;
 
+import exam_prep_08_01.statistics.BirthDayStat;
+
 import java.util.*;
 
 public class BirthdaySystemReminder {
@@ -38,13 +40,13 @@ public class BirthdaySystemReminder {
                     System.out.println("Total fines:"+this.people.size());
                     break;
                 case "5":
-
+                    System.out.println("And the happy month is:"+ BirthDayStat.getHappyMonth(this.people));
                     break;
                 case "6":
-
+                    System.out.println("And the sad month is: "+BirthDayStat.getSadMonth(this.people));
                     break;
                 case "7":
-
+                    printEvents();
                     break;
                 case "0":
                     endSystem();
@@ -52,6 +54,17 @@ public class BirthdaySystemReminder {
                 default:
                     System.out.println("Not an option!!!!");
             }
+        }
+    }
+
+    private void printEvents() {
+        Map<Integer,List<Person>> events = BirthDayStat.getEvents(this.people);
+        //iterate on map   single item key,value->collection(map)
+        for (Map.Entry<Integer,List<Person>> monthEvents:events.entrySet()){
+            System.out.println("====================================================");
+            System.out.println("          Birthday Month:"+monthEvents.getKey());
+            System.out.println("====================================================");
+            System.out.println(monthEvents.getValue());
         }
     }
 
@@ -99,7 +112,7 @@ public class BirthdaySystemReminder {
 
     private void showMenu() {
         System.out.println("\n\n\nBrithday System Menu\n" +
-         "================================"+
+         "================================\n"+
                 "1. Add person\n"+
                 "2. Delete Person\n"+
                 "3. Print All Pepole\n"+
