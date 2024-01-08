@@ -1,8 +1,12 @@
 package exam_prep_08_01.cls;
 
-import java.time.LocalDate;
+import exam_prep_08_01.DateCls.DateFactory;
 
-public class Person implements Comparable{
+import java.time.LocalDate;
+import java.util.Objects;
+
+public class Person implements Comparable<Person>{
+    //todo: teach generic classes
     //fields
     private Integer id;
     private String name;
@@ -23,7 +27,7 @@ public class Person implements Comparable{
         counter++;
         setId(counter);
         setName(name);
-        //todo: insert a random date
+        setBirthday(DateFactory.getLocalDate());
     }
 
     //getters/setters
@@ -56,10 +60,21 @@ public class Person implements Comparable{
     }
 
     //toString, hashCode, equal
-    @Override
-    public int compareTo(Object o) {
-        return 0;
+    public int compareTo(Person person) {
+        return this.birthday.compareTo(person.birthday);
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(id, person.id) && Objects.equals(name, person.name) && Objects.equals(birthday, person.birthday);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, birthday);
     }
 
     //user methods
