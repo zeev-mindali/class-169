@@ -79,4 +79,12 @@ public class Person implements Comparable<Person>{
 
     //user methods
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", birthday=[" + DateFactory.beautifyDate(this.getBirthday()) +
+                "]}";
+    }
 }
