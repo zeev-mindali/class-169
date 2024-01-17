@@ -15,6 +15,7 @@ public class SQLcommands {
             "(`name`, `tel`, `avgGrade`, `city`, `married`) " +
             "VALUES (?, ?, ?, ?, ?);";
 
+    public static final String getAllStudents = "SELECT * FROM `class169`.`students`";
     //CRUD
 
 }

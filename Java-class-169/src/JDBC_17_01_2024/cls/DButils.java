@@ -1,9 +1,6 @@
 package JDBC_17_01_2024.cls;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Map;
 
 public class DButils {
@@ -12,6 +9,11 @@ public class DButils {
         Connection connection = null;
 
         try {
+            String[] sqlStatment = sql.split(" ");
+            if (sqlStatment[0].toLowerCase().contains("delete")){
+                System.out.println("Roni please stop");
+                return false;
+            }
             //get a connection from connection pool
             connection = ConnectionPool.getInstance().getConnection();
 
@@ -73,6 +75,20 @@ public class DButils {
             return false;
         } finally {
             ConnectionPool.getInstance().returnConnection(connection);
+        }
+    }
+
+    public static ResultSet runQueryFroResult(String sql){
+        Connection connection = null;
+
+        try {
+            connection = ConnectionPool.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            return preparedStatement.executeQuery();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 }
