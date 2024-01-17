@@ -4,21 +4,26 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class SimpleTester {
     public static void main(String[] args) throws SQLException {
+        Scanner scanner = new Scanner(System.in);
         //createTable();
         //addNewStudent("Aylon","055-123-4567",100,"Qiryat Ono",false);
-        getStudents();
+        //System.out.println("Please enetr the grade above:");
+        //int aboveGrade = scanner.nextInt();
+        getStudents(0);
+
     }
 
-    private static void getStudents() throws SQLException {
+    private static void getStudents(int aboveGrade) throws SQLException {
         List<Students> myList = new ArrayList<>();
-        ResultSet results = DButils.runQueryFroResult(SQLcommands.getAllStudents);
+        Map<Integer,Object> params = new HashMap<>();
+        params.put(2,96);
+        params.put(1,94);
+
+        ResultSet results = DButils.runQueryFroResult(SQLcommands.getStudentBetwen,params);
         /*
             params.put(1,name);
             params.put(2,tel);

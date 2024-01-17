@@ -16,6 +16,10 @@ public class SQLcommands {
             "VALUES (?, ?, ?, ?, ?);";
 
     public static final String getAllStudents = "SELECT * FROM `class169`.`students`";
+    public static final String getStudentsAbove95 = "SELECT * FROM `class169`.`students` WHERE avgGrade>95";
+    public static final String getStudentAbove = "SELECT * FROM `class169`.`students` WHERE avgGrade>?";
+
+    public static final String getStudentBetwen = "SELECT * FROM `class169`.`students` WHERE avgGrade>? AND avgGrade<?";
     //CRUD
 
 }
