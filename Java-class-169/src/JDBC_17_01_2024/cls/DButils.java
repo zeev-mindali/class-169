@@ -5,12 +5,12 @@ import java.util.Map;
 
 public class DButils {
     public static boolean runQuery(String sql){
+        //delete from students
         //use connection from connection sql to send queries to our DB
         Connection connection = null;
 
         try {
-            String[] sqlStatment = sql.split(" ");
-            if (sqlStatment[0].toLowerCase().contains("delete")){
+            if (sql.toLowerCase().contains("delete")){
                 System.out.println("Roni please stop");
                 return false;
             }
