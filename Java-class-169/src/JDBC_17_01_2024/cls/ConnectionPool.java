@@ -12,9 +12,13 @@ public class ConnectionPool {
     public static ConnectionPool instance=null;
     private final Stack<Connection> connections = new Stack<>();
 
-    private ConnectionPool() throws SQLException {
+    private ConnectionPool() {
         System.out.println("We created new connection pool instance");
-        openAllConnections();
+        try {
+            openAllConnections();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private void openAllConnections() throws SQLException {
@@ -26,7 +30,7 @@ public class ConnectionPool {
         }
     }
 
-    public static ConnectionPool getInstance() throws SQLException {
+    public static ConnectionPool getInstance() {
         //first check if instance is null
         if (instance==null){
             synchronized (ConnectionPool.class){
