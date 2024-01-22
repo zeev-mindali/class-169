@@ -1,0 +1,3 @@
+in inteliJ
+=======================
+File->Project Structure->Library->Add from Maven->mysql:mysql-connector-java:8.0.29
