@@ -21,5 +21,18 @@ public class SQLcommands {
 
     public static final String getStudentBetwen = "SELECT * FROM `class169`.`students` WHERE avgGrade>? AND avgGrade<?";
     //CRUD
+    public static final String createCompaniesTable = "" +
+            "CREATE TABLE `companies` (" +
+            "  `id` INT NOT NULL AUTO_INCREMENT," +
+            "  `name` VARCHAR(45) NULL," +
+            "  `email` VARCHAR(45) NULL," +
+            "  `password` VARCHAR(10) NULL," +
+            "  PRIMARY KEY (`id`)," +
+            "  UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE," +
+            "  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE);";
 
+    public static final String companyExists = "" +
+            "select count(*) as user " +
+            "from companies " +
+            "where name=? and password=?";
 }
