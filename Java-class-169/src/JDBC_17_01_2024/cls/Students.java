@@ -11,6 +11,7 @@ public class Students {
     private boolean isMarried;
     private boolean isRecommnded;
 
+
     public Students(int id, String name, String tel, int avgGrade, String city, boolean isMarried) {
         this.id = id;
         this.name = name;
