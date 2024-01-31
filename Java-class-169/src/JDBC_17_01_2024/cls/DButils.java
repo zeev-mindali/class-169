@@ -1,6 +1,7 @@
 package JDBC_17_01_2024.cls;
 
 import java.sql.*;
+import java.util.List;
 import java.util.Map;
 
 public class DButils {
@@ -32,18 +33,75 @@ public class DButils {
 
     }
 
+//    public static boolean MultiRunQuery(List<MultiData> data){
+//        Connection connection = null;
+//        try {
+//            connection = ConnectionPool.getInstance().getConnection();
+//            data.forEach(item -> {
+//                PreparedStatement preparedStatement = connection.prepareStatement(item.sql);
+//
+//                //lambda expression
+//                item.params.forEach((key,value)->{
+//                    int myKey = Integer.parseInt(key);
+//                    try {
+//                        if (value instanceof Integer){
+//                            preparedStatement.setInt(myKey,(Integer)value);
+//                        } else if (value instanceof String){
+//                            preparedStatement.setString(myKey,String.valueOf(value));
+//                        } else if (value instanceof Date){
+//                            preparedStatement.setDate(myKey,(Date)value);
+//                        } else if (value instanceof Double){
+//                            preparedStatement.setDouble(myKey, (Double)value);
+//                        } else if (value instanceof Boolean){
+//                            preparedStatement.setBoolean(myKey, (Boolean)value);
+//                        } else if (value instanceof Float){
+//                            preparedStatement.setFloat(myKey, (Float)value);
+//                        }
+//                    } catch (SQLException e) {
+//                        throw new RuntimeException(e);
+//                    }
+//                });
+//                try {
+//                    preparedStatement.execute();
+//                } catch (SQLException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            });
+//
+//            return true;
+//        } catch (InterruptedException e) {
+//            System.out.println(e.getMessage());
+//            return false;
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//            return false;
+//        } finally {
+//            ConnectionPool.getInstance().returnConnection(connection);
+//        }
+//    }
+
+
+    //multiplate values
+    /*
+            INSERT INTO MyTable ( Column1, Column2 )
+            VALUES (Value1, Value2 ), ( Value1, Value2 )
+     */
+
+    /*
+            INSERT INTO MyTable ( Column1, Column2, Column3 )
+            VALUES
+            ('John', 123, 'Lloyds Office'),
+            ('Jane', 124, 'Lloyds Office'),
+            ('Billy', 125, 'London Office'),
+            ('Miranda', 126, 'Bristol Office');
+     */
     public static boolean runQuery(String sql, Map<Integer, Object> params){
         Connection connection = null;
         try {
             connection = ConnectionPool.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
-            /*
-                for (Map.Entry<Integer,Object) item:params.entrySet()){
 
-                }
-
-             */
 
             //lambda expression
             params.forEach((key,value)->{

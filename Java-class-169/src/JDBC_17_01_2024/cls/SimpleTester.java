@@ -1,5 +1,7 @@
 package JDBC_17_01_2024.cls;
 
+import JDBC_17_01_2024.Exceptions.SqlException;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,14 +9,42 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class SimpleTester {
+
     public static void main(String[] args) throws SQLException {
         Scanner scanner = new Scanner(System.in);
         //createTable();
         //addNewStudent("Aylon","055-123-4567",100,"Qiryat Ono",false);
         //System.out.println("Please enetr the grade above:");
         //int aboveGrade = scanner.nextInt();
-        getStudents(0);
+        //getStudents(0);
+        try {
+            System.out.println(checkCompany("shani@db.dao","55515")?"exists":"not exists");
+        } catch (SqlException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
+    private static boolean checkCompany(String companyEmail, String companyPassword) throws SqlException {
+        Map<Integer,Object> params = new HashMap<>();
+        params.put(1,companyEmail);
+        params.put(2,companyPassword);
+
+        ResultSet result = DButils.runQueryFroResult(SQLcommands.isCompanyExsists2,params);
+        try{
+            result.next();
+            return true;
+        } catch (Exception err){
+            return false;
+        }
+
+//        try {
+//            while (result.next()) {
+//                return result.getInt("isExists") == 1;
+//            }
+//        } catch (SQLException err){
+//            throw new SqlException(err.getMessage());
+//        }
+//        return false;
     }
 
     private static void getStudents(int aboveGrade) throws SQLException {

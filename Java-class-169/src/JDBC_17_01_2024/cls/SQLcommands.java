@@ -31,8 +31,14 @@ public class SQLcommands {
             "  UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE," +
             "  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE);";
 
-    public static final String companyExists = "" +
-            "select count(*) as user " +
-            "from companies " +
-            "where name=? and password=?";
+
+    public static final String isCompanyExsists = "" +
+            "SELECT count(*) as isExists " +
+            "FROM `class169`.`companies` " +
+            "WHERE company_email=? AND company_password=?";
+
+    public static final String isCompanyExsists2 = "" +
+            "SELECT * " +
+            "FROM `class169`.`companies` " +
+            "WHERE company_email=? AND company_password=?";
 }
