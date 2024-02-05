@@ -1,5 +1,7 @@
 package com.mindali.zeev.beans;
 
+import com.mindali.zeev.aop.HelloAmit;
+import com.mindali.zeev.aop.SendSMS;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import lombok.Data;
@@ -24,5 +26,14 @@ public class MyPrototype {
     @PreDestroy
     public void beyush(){
         System.out.println("Bayush");
+    }
+
+
+    @SendSMS
+    public int getNum(){return num;}
+
+    @HelloAmit
+    public void sayHI(){
+        System.out.println("Hi");
     }
 }
