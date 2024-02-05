@@ -11,7 +11,7 @@ public class CompanyDBdao implements companyDao{
         params.put(1,name);
         params.put(2,email);
         ResultSet result = DButils.runQueryFroResult(SQLcommands.companyExists, params);
-
+    return true;
     }
 
     @Override
