@@ -1,6 +1,7 @@
 package com.mindali.zeev;
 
 import com.mindali.zeev.beans.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -8,10 +9,14 @@ import org.springframework.context.ApplicationContext;
 @SpringBootApplication
 //@Configuration + @ComponentScan + @EnableAutoConfiguration
 public class ZeevApplication {
-
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(ZeevApplication.class, args);
-		MyPrototype p1 = ctx.getBean("myPrototype", MyPrototype.class);
+
+//		Cat myCat = ctx.getBean(Cat.class);
+//		System.out.println(myCat);
+
+
+//		MyPrototype p1 = ctx.getBean("myPrototype", MyPrototype.class);
 //		MyPrototype p2 = ctx.getBean("proto6", MyPrototype.class);
 //
 //		MySingleton s1 = ctx.getBean("mySingleton", MySingleton.class);
@@ -21,7 +26,7 @@ public class ZeevApplication {
 //		Teacher teacher = ctx.getBean("zeev",Teacher.class);
 //		Student student = ctx.getBean("tim", Student.class);
 //
-		System.out.println(p1);
+//		System.out.println(p1);
 //		System.out.println(p2);
 //		System.out.println("===========================================");
 //		System.out.println(s1);
@@ -31,8 +36,13 @@ public class ZeevApplication {
 //		System.out.println(student);
 
 //		MyComposed c1 = ctx.getBean(MyComposed.class);
-		System.out.println(p1.getNum());
-		p1.sayHI();
+//		System.out.println(p1.getNum());
+//		p1.sayHI();
+//
+//		Teacher teacher = ctx.getBean(Teacher.class);
+//		teacher.setName("zeev");
+
+
 	}
 
 }

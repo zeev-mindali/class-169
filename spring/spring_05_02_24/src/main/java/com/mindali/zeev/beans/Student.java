@@ -11,4 +11,5 @@ import org.springframework.stereotype.Component;
 @Data
 public class Student {
     private String name;
+
 }
