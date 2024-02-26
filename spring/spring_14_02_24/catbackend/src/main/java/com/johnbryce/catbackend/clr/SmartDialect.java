@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
+//@Component
 @Order(5)
 public class SmartDialect implements CommandLineRunner {
     @Autowired
