@@ -2,6 +2,7 @@ package com.johnbryce.catbackend.clr;
 
 import com.johnbryce.catbackend.beans.Cat;
 import com.johnbryce.catbackend.beans.Toy;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
@@ -15,10 +16,12 @@ import java.util.List;
 
 @Component
 @Order(1)
+@RequiredArgsConstructor
 public class RestTests implements CommandLineRunner {
 
-    @Autowired
-    RestTemplate restTemplate;
+//    @Autowired
+//    RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
     @Override
     public void run(String... args) throws Exception {
         //how to get an object by using resetTemplate
