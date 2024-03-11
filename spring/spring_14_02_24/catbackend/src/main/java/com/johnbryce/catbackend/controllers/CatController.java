@@ -1,6 +1,7 @@
 package com.johnbryce.catbackend.controllers;
 
 import com.johnbryce.catbackend.beans.Cat;
+import com.johnbryce.catbackend.beans.Toy;
 import com.johnbryce.catbackend.exceptions.CatSystemException;
 import com.johnbryce.catbackend.services.CatService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +44,11 @@ public class CatController {
     @ResponseStatus(HttpStatus.OK)
     public Cat getSingleCat(@PathVariable int id) throws CatSystemException {
         return catService.getSingleCat(id);
+    }
+
+    @GetMapping("/toys/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Toy> getCatToys(@PathVariable int id) throws CatSystemException{
+        return catService.getCatToys(id);
     }
 }
