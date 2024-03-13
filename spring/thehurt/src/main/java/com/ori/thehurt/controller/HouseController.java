@@ -2,6 +2,7 @@ package com.ori.thehurt.controller;
 
 import com.ori.thehurt.beans.Rooms;
 import com.ori.thehurt.beans.SmartModule;
+import com.ori.thehurt.exceptions.HouseExceptions;
 import com.ori.thehurt.service.HouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,7 +20,7 @@ public class HouseController implements HouseService {
     @Override
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void addRoom(@RequestBody Rooms newRoom) {
+    public void addRoom(@RequestBody Rooms newRoom) throws HouseExceptions {
         service.addRoom(newRoom);
     }
 

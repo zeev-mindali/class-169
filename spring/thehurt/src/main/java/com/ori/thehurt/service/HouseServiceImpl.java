@@ -2,6 +2,8 @@ package com.ori.thehurt.service;
 
 import com.ori.thehurt.beans.Rooms;
 import com.ori.thehurt.beans.SmartModule;
+import com.ori.thehurt.exceptions.ExceptionMessages;
+import com.ori.thehurt.exceptions.HouseExceptions;
 import com.ori.thehurt.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +16,10 @@ public class HouseServiceImpl implements HouseService {
     @Autowired
     RoomRepository repository;
     @Override
-    public void addRoom(Rooms newRoom) {
+    public void addRoom(Rooms newRoom) throws HouseExceptions {
+        if (repository.existsById(newRoom.getId())){
+            throw new HouseExceptions(ExceptionMessages.ROOM_ALREADY_EXISTS.getMessage());
+        }
         repository.save(newRoom);
     }
 
