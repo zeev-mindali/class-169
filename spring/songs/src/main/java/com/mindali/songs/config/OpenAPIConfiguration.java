@@ -21,7 +21,7 @@ public class OpenAPIConfiguration {
     public OpenAPI defineOpenAPI(@Value("springdoc-openapi-ui") String serviceTitle, @Value("1.6.12") String serviceVersion){
         Server server = new Server();
         server.setUrl("http://localhost:8080");
-        server.setDescription("our youtube api for development, shani the queen, her husband very lucy (we will pray for him)");
+        server.setDescription("our youtube api for development, shani the queen, her husband very lucy !!!");
 
         Contact myContact = new Contact();
         myContact.setName("Zeev Mindali");
